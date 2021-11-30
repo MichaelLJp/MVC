@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PRUEBAWEBModelStoreContainer" CdmEntityContainer="PRUEBAWEBEntities">
+    <EntitySetMapping Name="clients">
+      <EntityTypeMapping TypeName="PRUEBAWEBModel.clients">
+        <MappingFragment StoreEntitySet="clients">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nameClient" ColumnName="nameClient" />
+          <ScalarProperty Name="documentType" ColumnName="documentType" />
+          <ScalarProperty Name="documentNumber" ColumnName="documentNumber" />
+          <ScalarProperty Name="addressPlace" ColumnName="addressPlace" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="dateCreate" ColumnName="dateCreate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
