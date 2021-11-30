@@ -1,0 +1,50 @@
+﻿@model List<WebPrueba1.Models.ViewModels.ListTablaViewModel>
+
+
+<div class="container">
+    <div class="card " style="width: 100%;  margin-top:80px">
+        <div class="card-header card-header-primary text-center text-white" style="background-color: #d20e65;">
+            <h4 class="card-title">Clientes registrados </h4>
+        </div>
+
+        <div class="row justify-content-center" style="text-align:right;padding:10px">
+            <a class="btn btn-primary btn-lg" href="/Tabla/Nuevo/">Crear</a>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <tr>
+                        <th>id</th>
+                        <th>Nombre</th>
+                        <th>Tipo de documento</th>
+                        <th>Numero de documento</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
+                        <th>Fecha de Creación</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var elemento in Model)
+                    {
+                        <tr>
+                            <td>@elemento.id </td>
+                            <td>@elemento.nameClient </td>
+                            <td>@elemento.documentType </td>
+                            <td>@elemento.documentNumber </td>
+                            <td>@elemento.addressPlace </td>
+                            <td>@elemento.phone </td>
+                            <td>@elemento.email </td>
+                            <td>@elemento.dateCreate </td>
+                            <td>
+                                <a class="btn btn-primary" href="~/Tabla/Editar/@elemento.id"><i class="material-icons">edit</i></a>
+                                <a class="btn btn-danger" href="~/Tabla/Eliminar/@elemento.id"> <i class="material-icons">delete</i> </a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+</div>

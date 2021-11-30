@@ -1,0 +1,66 @@
+﻿@model WebPrueba1.Models.ViewModels.TablaViewModel
+
+@{
+    ViewBag.Title = "Nuevo Cliente";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 col-md-6 ml-auto mr-auto">
+            <div class="card " style="width: 38rem;  margin-top:100px">
+                <div class="card-header card-header-primary text-center text-white" style="background-color: #d20e65; ">
+                    <h4 class="card-title">Agregar Cliente</h4>
+                </div>
+                @using (Html.BeginForm("Nuevo", "Tabla", FormMethod.Post))
+                {
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10" style="align-content:center;">
+                                <div>
+                                    @Html.LabelFor(m => m.nameClient)
+                                    @Html.TextBoxFor(m => m.nameClient, "", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.nameClient, null, new { @class = "text-danger" })
+                                </div>
+                                <div>
+                                    @Html.LabelFor(m => m.documentType)
+                                    @Html.DropDownListFor(m => m.documentType, new List<SelectListItem> {
+                                      new SelectListItem { Value = "C.C" , Text = "C.C" },
+                                      new SelectListItem { Value = "C.Extranjeria" , Text = "C.Extranjeria" },
+                                      new SelectListItem { Value = "Pasaporte" , Text = "Pasaporte" }
+                                   }, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.documentType, null, new { @class = "text-danger" })
+                                </div>
+                                <div>
+                                    @Html.LabelFor(m => m.documentNumber)
+                                    @Html.TextBoxFor(m => m.documentNumber, "", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.documentNumber, null, new { @class = "text-danger" })
+                                </div>
+                                <div>
+                                    @Html.LabelFor(m => m.addressPlace)
+                                    @Html.TextBoxFor(m => m.addressPlace, "", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.addressPlace, null, new { @class = "text-danger" })
+                                </div>
+                                <div>
+                                    @Html.LabelFor(m => m.phone)
+                                    @Html.TextBoxFor(m => m.phone, "", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.phone, null, new { @class = "text-danger" })
+                                </div>
+                                <div>
+                                    @Html.LabelFor(m => m.email)
+                                    @Html.TextBoxFor(m => m.email, "", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.email, null, new { @class = "text-danger" })
+                                </div>
+
+
+                                <div style="text-align:center;">
+                                    <input value="Guardar" class="btn btn-primary mt-2" type="submit" />
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
