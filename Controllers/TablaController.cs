@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,17 +45,19 @@ namespace WebPrueba1.Controllers
                 {
                     using (PRUEBAWEBEntities db = new PRUEBAWEBEntities())
                     {
-                        var otabla = new clients();
-                        otabla.nameClient = model.nameClient;
-                        otabla.documentType = model.documentType;
-                        otabla.documentNumber = model.documentNumber;
-                        otabla.addressPlace = model.addressPlace;
-                        otabla.phone = model.phone;
-                        otabla.email = model.email;
-                        otabla.dateCreate = DateTime.Now.ToString();
-                        db.clients.Add(otabla);
-                        db.SaveChanges();
-                    }
+                        db.SP_clientCreate(model.nameClient, model.documentType, model.documentNumber, model.addressPlace, model.phone, model.email, DateTime.Now.ToString());
+                   // var otabla = new clients();
+                   // otabla.nameClient = model.nameClient;
+                   // otabla.documentType = model.nameClient;
+                   //otabla.documentNumber = model.documentNumber;
+                   // otabla.addressPlace = model.addressPlace;
+                   // otabla.phone = model.phone;
+                   //otabla.email = model.email;
+                   // otabla.dateCreate = DateTime.Now.ToString();
+                   // db.clients.Add(otabla);
+                    db.SaveChanges();
+                   
+                }
                     return Redirect("~/Tabla/");
 
                 }
@@ -92,15 +94,17 @@ namespace WebPrueba1.Controllers
             {
                 using (PRUEBAWEBEntities db = new PRUEBAWEBEntities())
                 {
-                    var otabla = db.clients.Find(model.id);
-                    otabla.nameClient = model.nameClient;
-                    otabla.documentType = model.documentType;
-                    otabla.documentNumber = model.documentNumber;
-                    otabla.addressPlace = model.addressPlace;
-                    otabla.phone = model.phone;
-                    otabla.email = model.email;
+                    db.SP_clientUpdate(model.id.ToString(), model.nameClient, model.documentType, model.documentNumber, model.addressPlace, model.phone, model.email);
+
+                 //   var otabla = db.clients.Find(model.id);
+                 //   otabla.nameClient = model.nameClient;
+                  //  otabla.documentType = model.documentType;
+                  //  otabla.documentNumber = model.documentNumber;
+                  //  otabla.addressPlace = model.addressPlace;
+                  //  otabla.phone = model.phone;
+                  //  otabla.email = model.email;
                     //otabla.dateCreate = model.dateCreate;
-                    db.Entry(otabla).State = System.Data.Entity.EntityState.Modified;
+                   // db.Entry(otabla).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
                 return Redirect("~/Tabla/");
@@ -119,8 +123,7 @@ namespace WebPrueba1.Controllers
         {
             using (PRUEBAWEBEntities db = new PRUEBAWEBEntities())
             {
-                var oTabla = db.clients.Find(id);
-                db.clients.Remove(oTabla);
+                db.SP_clientDelete(id);
                 db.SaveChanges();
                  
             }
